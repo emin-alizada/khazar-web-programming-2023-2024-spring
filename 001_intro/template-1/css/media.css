@@ -1,0 +1,8 @@
+@media (max-width: 720px) {
+    .cards{
+        grid-template-columns: 1fr;
+    }
+    .card-item-img{
+        border-radius: 16px;
+    }
+  }

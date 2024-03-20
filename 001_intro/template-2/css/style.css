@@ -1,0 +1,76 @@
+html {
+    height: 100vh;
+    background: linear-gradient(172.29deg, #09212C 15.72%, #043E49 68.5%);
+}
+
+body {
+    height: 100vh;
+    background-image: url('../images/background-image.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: auto 100%;
+}
+
+.header {
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 72px;
+    color: white;
+}
+
+.container {
+    padding: 200px 64px 64px 64px;
+}
+
+.banner {
+    width: 724px;
+    padding: 40px 56px;
+    background: linear-gradient(124.42deg, rgba(0, 0, 0, 0.36) 5.12%, rgba(0, 0, 0, 0.0675) 102.99%);
+    border-radius: 24px;
+    backdrop-filter: blur(8px);
+}
+
+.description {
+    font-size: 26px;
+    line-height: 36px;
+    color: white;
+    margin: 40px 0;
+}
+
+.button {
+    border-radius: 36px;
+    padding: 24px 48px 24px 48px;
+    gap: 10px;
+    background: #63E1E1;
+    font-size: 24px;
+    box-shadow: 0px 0px 20px 0px #63E1E140;
+}
+
+footer {
+    color: white;
+    margin-top: 80px;
+    padding: 24px 56px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 32px;
+    border: 1px solid white;
+    backdrop-filter: blur(8px);
+}
+
+.panel-title {
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 32px;
+    margin: 8px 0;
+}
+
+.panel-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24.59px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 92px;
+}
