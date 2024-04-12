@@ -1,0 +1,12 @@
+# Ignore Mac system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Ignore JetBrains IDE files
+.idea/
+
+# Ignore Visual Studio Code files
+.vscode/
+
