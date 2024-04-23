@@ -1,0 +1,17 @@
+h1{
+    color: red;
+}
+header{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+footer{
+    background-color: gray;
+}
+.blogContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    padding: 120px 0;
+}
