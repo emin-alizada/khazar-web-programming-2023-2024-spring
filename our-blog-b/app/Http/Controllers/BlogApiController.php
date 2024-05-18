@@ -7,29 +7,18 @@ use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class BlogController extends Controller
+class BlogApiController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        //        select * from blogs;
         $blogs = Blog::all();
 
-        return view('blog-index', ['blogs' => $blogs]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('blog-create');
+        return $blogs;
     }
 
     /**
@@ -44,7 +33,7 @@ class BlogController extends Controller
 
         $blog = Blog::create($validated);
 
-        return redirect(route('blogs.index'));
+        return $blog;
     }
 
     /**
@@ -57,20 +46,7 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
 
-        return view('blog-show', ['blog' => $blog]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $blog = Blog::findOrFail($id);
-
-        return view('blog-edit', ['blog' => $blog]);
+        return $blog;
     }
 
     /**
@@ -88,7 +64,7 @@ class BlogController extends Controller
 
         $blog->update($validated);
 
-        return redirect(route('blogs.index'));
+        return $blog;
     }
 
     /**
@@ -101,6 +77,6 @@ class BlogController extends Controller
     {
         Blog::destroy($id);
 
-        return redirect(route('blogs.index'));
+        return response()->status(204);
     }
 }

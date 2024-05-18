@@ -7,7 +7,7 @@ use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class BlogController extends Controller
+class BlogFullController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,6 +18,10 @@ class BlogController extends Controller
     {
         //        select * from blogs;
         $blogs = Blog::all();
+
+        if ($request->expectsJson()) {
+            return $blogs;
+        }
 
         return view('blog-index', ['blogs' => $blogs]);
     }
@@ -44,6 +48,10 @@ class BlogController extends Controller
 
         $blog = Blog::create($validated);
 
+        if ($request->expectsJson()) {
+            return $blog;
+        }
+
         return redirect(route('blogs.index'));
     }
 
@@ -53,9 +61,13 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
         $blog = Blog::findOrFail($id);
+
+        if ($request->expectsJson()) {
+            return $blog;
+        }
 
         return view('blog-show', ['blog' => $blog]);
     }
@@ -88,6 +100,10 @@ class BlogController extends Controller
 
         $blog->update($validated);
 
+        if ($request->expectsJson()) {
+            return $blog;
+        }
+
         return redirect(route('blogs.index'));
     }
 
@@ -97,9 +113,13 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         Blog::destroy($id);
+
+        if ($request->expectsJson()) {
+            return response()->status(204);
+        }
 
         return redirect(route('blogs.index'));
     }

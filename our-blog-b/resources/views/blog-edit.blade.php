@@ -9,23 +9,24 @@
 </head>
 <body>
 
-<h1>Create new blog</h1>
+<h1>Edit your blog</h1>
 
-<form action="{{ route('blogs.store') }}" style="display: flex; flex-direction: column; align-items: flex-start" method="post">
+<form action="{{ route('blogs.update', $blog->id) }}" style="display: flex; flex-direction: column; align-items: flex-start" method="post">
     @csrf
+    @method('put')
     <label>
         <span>Blog title</span>
-        <input type="text" name="title" value="{{ old('title') }}"/>
+        <input type="text" name="title" value="{{ old('title') ?? $blog->title }}" />
         @error('title')
-            <div>{{ $message }}</div>
+        <div>{{ $message }}</div>
         @enderror
     </label>
 
     <label>
         <span>Blog content</span>
-        <textarea name="content">{{ old('content') }}</textarea>
+        <textarea name="content">{{ old('content') ?? $blog->content }}</textarea>
         @error('content')
-            <div>{{ $message }}</div>
+        <div>{{ $message }}</div>
         @enderror
     </label>
 

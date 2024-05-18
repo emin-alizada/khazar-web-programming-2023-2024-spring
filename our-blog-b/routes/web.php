@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BlogFullController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\BlogController;
 
@@ -28,8 +30,18 @@ use \App\Http\Controllers\BlogController;
 //    return view("blog", ['blogId'=>$id]);
 //})->name('blog.inner');
 
-Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
-Route::get('/blogs/create', [BlogController::class, 'create']);
-Route::get('/blogs/{id}', [BlogController::class, 'show'])->name('blogs.show');
-Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
-Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->name('blogs.destroy');
+
+// Explicit routing of resource
+
+//Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+//Route::get('/blogs/create', [BlogController::class, 'create'])->name('blogs.create');
+//Route::get('/blogs/{id}', [BlogController::class, 'show'])->name('blogs.show');
+//Route::post('/blogs', [BlogController::class, 'store'])->name('blogs.store');
+//Route::get('/blogs/{id}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
+//Route::put('/blogs/{id}', [BlogController::class, 'update'])->name('blogs.update');
+//Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->name('blogs.destroy');
+
+// Implicit routing of resource
+Route::resource('blogs', BlogController::class);
+Route::resource('blogs-v2', BlogFullController::class);
+Route::resource('categories', CategoryController::class);

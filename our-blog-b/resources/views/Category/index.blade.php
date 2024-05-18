@@ -8,24 +8,27 @@
     <title>Document</title>
 </head>
 <body>
-<a href="{{ route('blogs.create') }}">Create blog</a>
+<a href="{{ route('categories.create') }}">Create category</a>
 
 
-<h1>All blogs</h1>
+<h1>All categories</h1>
 
-@foreach($blogs as $blog)
+@forelse ($categories as $category)
     <div style="margin-bottom: 24px;">
-        <a href="{{ route('blogs.show', $blog->id) }}">{{ $blog->title }}</a>
-        <p>{{ $blog->content }}</p>
+        <a href="{{ route('categories.show', $category->id) }}">{{ $category->title }}</a>
+
         <div style="display:flex;">
-            <a href="{{ route('blogs.edit', $blog->id) }}"><button>Edit</button></a>
-            <form action="{{ route('blogs.destroy', $blog->id) }}" method="post">
+            <a href="{{ route('categories.edit', $category->id) }}"><button>Edit</button></a>
+            <form action="{{ route('categories.destroy', $category->id) }}" method="post">
                 @csrf
                 @method('delete')
-                <button>delete blog</button>
+                <button>delete category</button>
             </form>
         </div>
     </div>
-@endforeach
+@empty
+    <p>No categories</p>
+@endforelse
+
 </body>
 </html>

@@ -9,23 +9,15 @@
 </head>
 <body>
 
-<h1>Create new blog</h1>
+<h1>Create new category</h1>
 
-<form action="{{ route('blogs.store') }}" style="display: flex; flex-direction: column; align-items: flex-start" method="post">
+<form action="{{ route('categories.store') }}" style="display: flex; flex-direction: column; align-items: flex-start" method="post">
     @csrf
     <label>
-        <span>Blog title</span>
+        <span>Category title</span>
         <input type="text" name="title" value="{{ old('title') }}"/>
         @error('title')
-            <div>{{ $message }}</div>
-        @enderror
-    </label>
-
-    <label>
-        <span>Blog content</span>
-        <textarea name="content">{{ old('content') }}</textarea>
-        @error('content')
-            <div>{{ $message }}</div>
+        <div>{{ $message }}</div>
         @enderror
     </label>
 

@@ -9,6 +9,27 @@
 </head>
 <body>
 <h1>Categories</h1>
+<a href="{{ route('categories.create') }}"><button type="button">New Category</button></a>
+
+<h2>Title: </h2>
+@foreach ($categories as $category)
+    <div
+        style="display: flex; justify-content: space-between"
+    >
+        <span>{{$category->title}}</span>
+        <div style="display: flex; gap: 4px">
+            <form action="{{ route('categories.destroy', $category->id) }}" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit">Delete</button>
+            </form>
+            <a href="{{ route('categories.edit', $category->id) }}">
+                <button type="button">Edit</button>
+            </a>
+        </div>
+    </div>
+@endforeach
+
 
 </body>
 </html>
